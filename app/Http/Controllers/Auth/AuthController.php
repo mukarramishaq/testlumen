@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Users;
+use App\User;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,10 +14,10 @@ class AuthController extends Controller
     /**
      * generate a jwt token based on given \App\User object
      *
-     * @param Users $user
+     * @param User $user
      * @return Illuminate\Http\Response;
      */
-    protected function jwt(Users $user)
+    protected function jwt(User $user)
     {
         $payload = [
             'iss' => "lumen-jwt", // Issuer of the token
@@ -41,16 +41,16 @@ class AuthController extends Controller
     /**
      * authenticates user and gives a json response
      *
-     * @param Users $user
+     * @param void
      * @return \Response
      */
-    public function login(Users $user)
+    public function login()
     {
         $this->validate($this->request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        $user = Users::where('email', $this->request->json('email'))->first(); // Find the user by email
+        $user = User::where('email', $this->request->input('email'))->first(); // Find the user by email
         if (!$user) {
             return response()->json([
                 'responseType' => 'error',
@@ -59,7 +59,7 @@ class AuthController extends Controller
         }
 
         // Verify the password and generate the token
-        if (Hash::check($this->request->json('password'), $user->password)) {
+        if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([
                 'responseType' => 'success',
                 'status' => 200,
@@ -70,5 +70,35 @@ class AuthController extends Controller
             'responseType' => 'error',
             'error' => 'Invalid Credentials',
         ], 400);
+    }
+
+    /**
+     * creates user and gives a json response
+     *
+     * @param void
+     * @return \Response
+     */
+    public function register()
+    {
+        $this->validate($this->request, [
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+            'name' => 'required|string'
+        ]);
+        try {
+            $data = $this->request->only(['email', 'password', 'name']);
+            $data['password'] = Hash::make($data['password']);
+            $user = User::create($data);
+            return response()->json([
+                'responseType' => 'success',
+                'status' => 200,
+                'token' => $this->jwt($user), // return token
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'responseType' => 'error',
+                'error' => $e->getMessage(),
+            ], 400);
+        }
     }
 }
