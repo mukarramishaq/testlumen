@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a974d5f5203600d851eccbf1bd61ed9",
+    "content-hash": "53ad9859aa085b827d4128b160ed43bf",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1578,6 +1578,36 @@
                 "psr-3"
             ],
             "time": "2018-11-05T09:00:11+00:00"
+        },
+        {
+            "name": "mukarramishaq/testhash",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mukarramishaq/testhash.git",
+                "reference": "a5c2b04609e1c93279cfc9b19f368e42f609987a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mukarramishaq/testhash/zipball/a5c2b04609e1c93279cfc9b19f368e42f609987a",
+                "reference": "a5c2b04609e1c93279cfc9b19f368e42f609987a",
+                "shasum": ""
+            },
+            "type": "helper",
+            "autoload": {
+                "psr-4": {
+                    "Mukarramishaq\\TestHash\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Mukarram Ishaq",
+                    "email": "mukarram.ishaq@rolustech.net"
+                }
+            ],
+            "description": "This package is for testing purpose only",
+            "time": "2019-07-11T17:02:36+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -4696,7 +4726,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "mukarramishaq/testhash": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
