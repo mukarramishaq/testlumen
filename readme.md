@@ -10,6 +10,7 @@ It is test project api built in lumen
 # Tests 
 Tests are in `tests` folder in the root directory.  
 To run the tests execute the following command  
+
     vendor/bin/phpunit --testsuite custom
     
 
