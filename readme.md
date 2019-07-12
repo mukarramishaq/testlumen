@@ -1,14 +1,17 @@
-#testlumen  
+# testlumen  
 It is test project api built in lumen  
 
-#installation  
+# Installation  
 - clone the repository
 - install the dependencies through composer
 - set up environment configuratio (in .env) (Don't forget to metion APP_KEY and JWT_SECRET keys in it)
 - run the server
 
 # Tests 
-Tests are in `tests` folder in the root directory
+Tests are in `tests` folder in the root directory.  
+To run the tests execute the following command  
+    vendor/bin/phpunit --testsuite custom
+    
 
 # Docs  
 Documentation can be found in the `public/docs` folder  
