@@ -1,4 +1,9 @@
 <?php
+/**
+ * this file contains AuthController Class only
+ * @author Mukarram Ishaq <mukarramishaq189@gmail.com>
+ */
+
 namespace App\Http\Controllers\Auth;
 
 use App\User;
@@ -7,15 +12,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Lumen\Routing\Controller;
 
+/**
+ * AuthController class controlls the routes relating to login and register only
+ * @author Mukarram Ishaq <mukarramishaq189@gmail.com>
+ */
 class AuthController extends Controller
 {
+    /**
+     * $request variable will contain the instance of lluminate\Http\Request only
+     *
+     * @var lluminate\Http\Request
+     */
     private $request;
 
     /**
      * generate a jwt token based on given \App\User object
      *
      * @param User $user
-     * @return Illuminate\Http\Response;
+     * @return string;
      */
     protected function jwt(User $user)
     {
@@ -30,6 +44,8 @@ class AuthController extends Controller
 
     /**
      * constructor
+     * This parameteric onstructor requires you to give an 
+     * instance of lluminate\Http\Request to instantiate this class
      *
      * @param Request $request
      */
@@ -39,10 +55,15 @@ class AuthController extends Controller
     }
 
     /**
-     * authenticates user and gives a json response
+     * authenticates user and gives a json response.
+     * 
+     * request validation is also done here. So, on encountering
+     * malformed request, it would give you error in response
+     * 
+     * The request should contain the email and password in its body
      *
      * @param void
-     * @return \Response
+     * @return lluminate\Http\Response
      */
     public function login()
     {
@@ -74,9 +95,14 @@ class AuthController extends Controller
 
     /**
      * creates user and gives a json response
+     * 
+     * request validation is also done here. So, on encountering
+     * malformed request, it would give you error in response
+     * 
+     * The request should contain the name, email and password in its body
      *
      * @param void
-     * @return \Response
+     * @return lluminate\Http\Response
      */
     public function register()
     {

@@ -1,17 +1,28 @@
 <?php
+/**
+ * HashController file contains HashController class only.
+ * 
+ * @author Mukarram <mukarramishaq189@gmail.com>
+ */
 
 namespace App\Http\Controllers;
 
 use \Mukarramishaq\TestHash\Helpers\TestHash;
 use Illuminate\Http\Request;
 
+/**
+ * HashController class controls routes relating to hash
+ * 
+ * @author Mukarram <mukarramishaq@gmail.com>
+ */
 class HashController extends Controller
 {
     /**
      * controller of /hash endpoint. it returns a random hash of 
      * size 128 of random string in json response
-     *
-     * @return 
+     * 
+     * @param string $stringToBeHashed [optional] [default is empty string]
+     * @return Illuminate\Http\Response
      */
     public function hash($stringToBeHashed='')
     {
