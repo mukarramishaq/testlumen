@@ -1,3 +1,19 @@
+#testlumen  
+It is test project api built in lumen  
+
+#installation  
+- clone the repository
+- install the dependencies through composer
+- set up environment configuratio (in .env) (Don't forget to metion APP_KEY and JWT_SECRET keys in it)
+- run the server
+
+# Tests 
+Tests are in `tests` folder in the root directory
+
+# Docs  
+Documentation can be found in the `public/docs` folder  
+
+
 # Lumen PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
